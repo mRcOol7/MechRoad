@@ -454,6 +454,7 @@
         
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('block'); // Ensure the menu is displayed as a block
         });
 
         // Smooth scroll for anchor links
@@ -465,18 +466,8 @@
                 });
                 // Close mobile menu if open
                 mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('block'); // Ensure the menu is hidden
             });
-        });
-
-        // Intersection Observer for animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in-up');
-                }
-            });
-        }, {
-            threshold: 0.1
         });
 
         document.querySelectorAll('.feature-card, .stats-grid > div').forEach((el) => observer.observe(el));
